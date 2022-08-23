@@ -1,5 +1,5 @@
 # yt_downloader
-Download videos from youtube in mp3 and mp4
+Download videos or playlists from youtube in mp3 and mp4
 
 To use at first install [ffmpeg](https://ffmpeg.org/download.html) and add it to PATH
 
