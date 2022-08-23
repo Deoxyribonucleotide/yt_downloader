@@ -64,7 +64,7 @@ if p == 'p':
             print(f"Downloading {vid.title}")
             executor.submit(vid_or_aud, vid, adonl, output_path)
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
         for file in os.listdir(output_path):
             file_path = '/'.join((output_path, file))
             executor.submit(convert_to_mp3, file, file_path)        
