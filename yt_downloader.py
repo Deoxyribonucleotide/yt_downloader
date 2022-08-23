@@ -16,19 +16,19 @@ def check_option(p:str, options:list):
 
 
 def vid_or_aud(vid, audio:bool, output_path):
-
     if audio:
         vid.streams.filter(only_audio=audio, abr='160kbps').first().download(output_path=output_path)
     else:
         vid.streams.filter(progressive=True).get_highest_resolution().download(output_path=output_path)    
 
+        
 def convert_to_mp3(vid, output_path):
-
     mp3File = ''.join(output_path).replace("webm", "mp3")
     command = f"ffmpeg -i \"{output_path}\" -vn -ab 128k -ar 44100 -y \"{mp3File}\""
     subprocess.call(command, shell=True)    
     os.remove(output_path)
 
+    
 p = input("Enter p for playlist,enter v for video\n")
 p = check_option(p, ['p', 'v']) 
 
@@ -66,7 +66,8 @@ if p == 'p':
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
         for file in os.listdir(output_path):
             file_path = '/'.join((output_path, file))
-            executor.submit(convert_to_mp3, file, file_path)        
+            executor.submit(convert_to_mp3, file, file_path)  
+            
 else:
     p = YouTube(url)
     print(f"Downloading {p.title}")
