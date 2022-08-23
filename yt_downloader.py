@@ -6,7 +6,6 @@ import concurrent.futures
 import subprocess
 
 
-#https://www.youtube.com/playlist?list=PL_ZyAsgjIfbjHseXMFIYkWHJJ3yefyWhr
 def check_option(p:str, options:list):
     while True:
         if p not in options:
