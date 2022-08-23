@@ -72,3 +72,7 @@ else:
     p = YouTube(url)
     print(f"Downloading {p.title}")
     vid_or_aud(p, adonl, output_path)
+    if adonl:
+        for file in os.listdir(output_path):
+            file_path = '/'.join((output_path, file))
+            convert_to_mp3(file, file_path) 
